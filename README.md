@@ -8,17 +8,18 @@ First of all, it is helpful to run rails and installs dependencies avoiding conf
 
 # How to use?
 
-After you clone this project, follow the steps:
-- open a terminal session in your terminal tool (Iterm, Terminal, Putty)
-- got to folder where you've clone the project (Ex.: ```cd docker-compose-for-rails5```)
-- type the command: ```make run```
+There two folder:
+* mysql: when you want to create a rails app on mysql database
+* sqllite: when you want to create a rails app on sqlite database
 
-This command will run the container and open a session inside the container. If all goes well, you will be in the path ```/usr/src/app```.   In this path, you can run commands like ```rails new my-rails-project```, ```gem install foo``` or anything else.
+After you clone the project, go to the folder of the database you want and read README.md file present in the folder
 
-##### IMPORTANT!
-when you run ```make run```in the first time, the docker image will be created. In the next times, docker compose will use the image.
+# FAQ
 
-# Extra tools
+=> **I already have a rails project. How can I use this docker container?**
+**A:** Pretty simple. Clone this docker container project and follow the steps:
+* for mysql: copy the files .env, Dockerfile, docker-compose, entrypoint, Makefile, my.cnf and paste inside your rails root path.  After that, type the command: ```make run```. Reminder yourself to edit your database.yml file using my example.database.yml as reference. If you have any questions, you can check [README.MD](./mysql/README.MD) inside the 'mysql' folder
+* for sqlite:  copy the files Dockerfile, docker-compose, entrypoint, Makefile and pasta inside your rails root path. After that, type the command: 'make run'. If you have any questions, you can check [README.MD](./mysql/README.MD) inside the 'mysql' folder
 
-* If you want to up rails server, just type the command ```make rs``` in a new terminal session.
-* If you want to up rails console, just tyoe the command ```make rc``` in a new terminal session.
+=> **I'm having problems to up the container or run rails project. What can I do ?**
+**A:** create a [github issue](https://github.com/pierreabreup/docker-compose-for-rails5/issues) . I promise will answer as soon as possible

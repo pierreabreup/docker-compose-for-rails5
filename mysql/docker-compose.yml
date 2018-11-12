@@ -1,0 +1,42 @@
+version: '3.5'
+
+services:
+  app:
+    container_name: rails5-container
+    build: .
+    image: rails5
+    ports:
+      - 3000:3000
+    environment:
+      - APP_DB_HOST=mysql
+      - APP_DB_PORT=3306
+      - APP_DB_DATABASE="${MYSQL_DATABASE_NAME}"
+      - APP_DB_USERNAME=root
+      - APP_DB_PASSWORD="${MYSQL_USERNAME_PASSWORD}"
+    working_dir: /usr/src/app
+    links:
+      - database:database-host
+    volumes:
+      - '.:/usr/src/app'
+      - rails5-usrlocal:/usr/local/
+  database:
+    container_name: rails5-mysql
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./my.cnf:/etc/mysql/my.cnf
+      - mysql-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD="${MYSQL_USERNAME_PASSWORD}"
+      - MYSQL_DATABASE=rails5
+    networks:
+      - local
+
+volumes:
+  rails5-usrlocal:
+  mysql-data:
+
+networks:
+  local:
+
