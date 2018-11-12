@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+  app:
+    build: .
+    image: rails5
+    ports:
+      - 3000:3000
+    working_dir: /usr/src/app
+    volumes:
+      - '.:/usr/src/app'
+      - rails5-usrlocal:/usr/local/
+
+volumes:
+  rails5-usrlocal:
+
+networks:
+  local:
+
