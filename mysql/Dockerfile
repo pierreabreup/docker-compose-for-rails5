@@ -5,6 +5,7 @@ RUN apk add --update \
   build-base \
   ruby-nokogiri \
   nodejs \
+  git \
   libxml2-dev \
   libxslt-dev \
   mysql-dev \
