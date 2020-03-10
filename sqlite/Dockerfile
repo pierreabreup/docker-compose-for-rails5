@@ -14,7 +14,7 @@ EXPOSE 3000
 
 WORKDIR /usr/src/app
 
-RUN gem install rails --no-ri --no-rdoc
+RUN gem install rails
 
 COPY ./entrypoint.sh /etc/entrypoint.sh
 RUN chmod +x /etc/entrypoint.sh
