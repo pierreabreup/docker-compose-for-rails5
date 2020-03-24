@@ -19,6 +19,8 @@ services:
     volumes:
       - '.:/usr/src/app'
       - rails5-usrlocal:/usr/local/
+    networks:
+      - local
   database:
     container_name: rails5-mysql
     image: mysql:5.7
